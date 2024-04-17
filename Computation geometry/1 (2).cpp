@@ -92,9 +92,9 @@ vector<P> minkowski(vector<P> p, vector<P> q){
     while(i < p.size() - 2 || j < q.size() - 2){
         result.push_back(p[i] + q[j]);
         auto cross = (p[i + 1] - p[i]).det(q[j + 1] - q[j]);
-        if(cross >= 0)
+        if(cross >= 0 && i < SZ(p) - 2)
             ++i;
-        if(cross <= 0)
+        if(cross <= 0 && j < SZ(q) - 2)
             ++j; 
     }
     return result;
