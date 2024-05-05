@@ -1,0 +1,6 @@
+{
+    "editor.formatOnSave": true,
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 350,
+    "C_Cpp.default.cppStandard": "gnu++20"
+}
