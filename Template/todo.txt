@@ -18,6 +18,7 @@ Graph:
 Geometry:
     1.format them
 Others:
-    1.add tricks
-    2.do version control
-    3.learn other library(kactl, the-tourist, heltion...)
+    1.move the useless things
+    2.add tricks
+    3.do version control
+    4.learn other library(kactl, the-tourist, heltion...)
