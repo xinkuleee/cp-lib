@@ -1,4 +1,3 @@
-
 vector<int> add(vector<int> &A, vector<int> &B) {
     if (A.size() < B.size()) return add(B, A);
     vector<int> C;

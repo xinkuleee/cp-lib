@@ -22,7 +22,7 @@ void solve() {
     }
     rep(i, 1, n) if (!vis[i]) dfs(i);
     fill(vis + 1, vis + n + 1, 0);
-    reverse(ALL(out));
+    reverse(all(out));
     for (auto v : out) if (!vis[v]) {
             c.clear();
             dfs_rev(v);

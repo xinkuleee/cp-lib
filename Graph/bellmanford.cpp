@@ -1,23 +1,33 @@
-vector<PII> g[maxn];
-int dist[maxn];
-bool ins[maxn];
-void bellman_ford(int st) {
-    memset(dist, 0x3f, sizeof dist);
-    memset(ins, 0, sizeof ins);
-    dist[st] = 0;
-    int cnt = 0;
-    while (true) {
-        cnt++;
-        bool ok = 0;
-        for (int i = 1; i <= n; i++)
-            for (auto [v, w] : g[i]) {
-                if (dist[v] > dist[i] + w) {
-                    dist[v] = dist[i] + w;
-                    ok = 1;
-                }
-            }
-        if (!ok) break;
-        if (cnt == n) break;
-    }
+vector<PII> e[N];
+
+template <typename T>
+void add(int u, int v, T w) {
+	e[u].eb(v, w);
 }
 
+template <typename T>
+vector<T> bellmanford(vector<pair<int, T>> *g, int start) {
+	// assert(0 <= start && start < g.n);
+	// maybe use inf = numeric_limits<T>::max() / 4
+	const T inf = numeric_limits<T>::max() / 4;
+	vector<T> dist(n, inf);
+	dist[start] = 0;
+	int cnt = 0;
+	while (true) {
+		bool upd = 0;
+		cnt++;
+		for (int i = 0; i < n; i++) {
+			for (auto [to, cost] : e[i]) {
+				if (dist[to] > dist[i] + cost) {
+					upd = 1;
+					dist[to] = dist[i] + cost;
+				}
+			}
+		}
+		if (!upd || cnt == n) {
+			break;
+		}
+	}
+	return dist;
+	// returns inf if there's no path
+}

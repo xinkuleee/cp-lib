@@ -1,24 +1,34 @@
-int n, m, k;
-vector<PII> g[maxn];
-int dist[maxn];
-bool ins[maxn];
-void dijkstra(int st, int end) {
-    fill(dist + 1, dist + n + 1, bit(29));
-    fill(ins + 1, ins + n + 1, 0);
-    dist[st] = 0;
-    while (true) {
-        int cnt = -1;
-        bool ok = 0;
-        for (int i = 1; i <= n; i++) {
-            if (dist[i] < bit(28) && !ins[i])
-                if (cnt == -1 || dist[i] < dist[cnt])
-                    cnt = i, ok = 1;
-        }
-        if (!ok) break;
-        ins[cnt] = 1;
-        for (auto [id, w] : g[cnt]) {
-            dist[id] = min(dist[id], dist[cnt] + w);
-        }
-    }
+vector<PII> e[N];
+
+template <typename T>
+void add(int u, int v, T w) {
+	e[u].eb(v, w);
 }
 
+template <typename T>
+vector<T> dijkstra(vector<pair<int, T>> *g, int start) {
+	// assert(0 <= start && start < g.n);
+	// maybe use inf = numeric_limits<T>::max() / 4
+	const T inf = numeric_limits<T>::max();
+	vector<T> dist(n, inf);
+	vector<int> was(n, 0);
+	dist[start] = 0;
+	while (true) {
+		int cur = -1;
+		for (int i = 0; i < n; i++) {
+			if (was[i] || dist[i] == inf) continue;
+			if (cur == -1 || dist[i] < dist[cur]) {
+				cur = i;
+			}
+		}
+		if (cur == -1 || dist[cur] == inf) {
+			break;
+		}
+		was[cur] = 1;
+		for (auto [to, cost] : g[cur]) {
+			dist[to] = min(dist[to], dist[cur] + cost);
+		}
+	}
+	return dist;
+	// returns inf if there's no path
+}
