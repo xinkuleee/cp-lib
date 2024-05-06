@@ -1,22 +1,45 @@
-int nxt[maxn];
-char a[maxn], b[maxn];
-vector<int> pos;
-void get_next(char s[], int len) {
-    nxt[1] = 0;
-    int x = 0;
-    for (int i = 2; i <= len; i++) {
-        while (x > 0 && s[x + 1] != s[i]) x = nxt[x];
-        if (s[x + 1] == s[i])
-            nxt[i] = x + 1, x++;
-        else nxt[i] = x;
-    }
+template <typename T>
+vector<int> kmp_table(int n, const T &s) {
+	vector<int> p(n, 0);
+	int k = 0;
+	for (int i = 1; i < n; i++) {
+		while (k > 0 && !(s[i] == s[k])) {
+			k = p[k - 1];
+		}
+		if (s[i] == s[k]) {
+			k++;
+		}
+		p[i] = k;
+	}
+	return p;
 }
-int match(char a[], char s[], int n, int m) {
-    int x = 0, ans = 0;
-    for (int i = 1; i <= n; i++) {
-        while (x > 0 && a[i] != s[x + 1]) x = nxt[x];
-        if (a[i] == s[x + 1]) x++;
-        if (x == m) ans++, x = nxt[x], pos.pb(i - m + 1);
-    }
-    return ans;
+
+template <typename T>
+vector<int> kmp_table(const T &s) {
+	return kmp_table((int) s.size(), s);
+}
+
+template <typename T>
+vector<int> kmp_search(int n, const T &s, int m, const T &w, const vector<int> &p) {
+	assert(n >= 1 && (int) p.size() == n);
+	vector<int> res;
+	int k = 0;
+	for (int i = 0; i < m; i++) {
+		while (k > 0 && (k == n || !(w[i] == s[k]))) {
+			k = p[k - 1];
+		}
+		if (w[i] == s[k]) {
+			k++;
+		}
+		if (k == n) {
+			res.push_back(i - n + 1);
+		}
+	}
+	return res;
+	// returns 0-indexed positions of occurrences of s in w
+}
+
+template <typename T>
+vector<int> kmp_search(const T &s, const T &w, const vector<int> &p) {
+	return kmp_search((int) s.size(), s, (int) w.size(), w, p);
 }
