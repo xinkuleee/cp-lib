@@ -19,7 +19,7 @@ struct BIT {
 	}
 
 	void modify(int x, T v) {
-		if (x == 0) return;
+		if (x <= 0) return;
 		// while (x < n) {
 		while (x <= n) {
 			fenw[x] += v;

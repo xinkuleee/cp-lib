@@ -6,8 +6,6 @@
 
 using namespace std;
 
-#define bit(x) (1ll<<(x))
-
 #ifdef LOCAL
 #include "algo/debug.h"
 #else
