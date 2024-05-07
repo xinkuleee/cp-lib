@@ -54,7 +54,7 @@ ll query(int rt, int l, int r) {
     return seg[rt].cnt;
 }
 
-/*void split(int &p, int &q, int s, int t, int l, int r) {
+void split(int &p, int &q, int s, int t, int l, int r) {
     if (t < l || r < s) return;
     if (!p) return;
     if (l <= s && t <= r) {
@@ -68,7 +68,7 @@ ll query(int rt, int l, int r) {
     if (m < r) split(rs[p], rs[q], m + 1, t, l, r);
     push_up(p);
     push_up(q);
-}*/
+}
 
 void solve() {
     cin >> n;
