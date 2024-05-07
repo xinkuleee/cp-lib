@@ -29,6 +29,7 @@ void solve() {
 			}
 		}
 		if (!upd) break;
+		// 仍然有约束未满足
 		if (i == n && upd) ok = 0;
 	}
 	if (!ok) {
