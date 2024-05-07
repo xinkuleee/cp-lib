@@ -17,11 +17,11 @@ void dfs(int x, int f) {
     if (low[x] >= dfn[x]) {
         ++tot;
         while (true) {
-            int cnt = stk.top();
+            int cur = stk.top();
             stk.pop();
-            belong[cnt] = tot;
-            bcc[tot].pb(cnt);
-            if (cnt == x) break;
+            belong[cur] = tot;
+            bcc[tot].pb(cur);
+            if (cur == x) break;
         }
     }
 }

@@ -17,10 +17,10 @@ void dfs(int x, int f) {
                 ++tot;
                 bcc[tot].pb(x);
                 while (true) {
-                    int cnt = stk.top();
+                    int cur = stk.top();
                     stk.pop();
-                    bcc[tot].pb(cnt);
-                    if (cnt == y) break;
+                    bcc[tot].pb(cur);
+                    if (cur == y) break;
                 }
             }
         } else {

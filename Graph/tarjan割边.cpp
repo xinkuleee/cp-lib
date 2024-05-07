@@ -18,10 +18,10 @@ void dfs(int x, int f) {
     if (low[x] >= dfn[x]) {
         ++tot;
         while (true) {
-            int cnt = stk.top();
+            int cur = stk.top();
             stk.pop();
-            ins[cnt] = 0;
-            if (cnt == x) break;
+            ins[cur] = 0;
+            if (cur == x) break;
         }
         if (f != 0) ans.pb(f);
     }
