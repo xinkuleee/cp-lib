@@ -1,4 +1,3 @@
-
 int ans[maxn], lev[maxn];
 array<int, 5> v[maxn], tmp[maxn];
 
