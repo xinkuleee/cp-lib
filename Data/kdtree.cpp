@@ -1,116 +1,171 @@
 namespace kd {
-const int K = 2, M = 1000005;
-const ll inf = 1E16;
-extern struct P* null;
-struct P {
-    ll d[K], l[K], r[K], val;
-    ll Max[K], Min[K], sum;
-    P *ls, *rs, *fa;
-    P* up() {
-        rep(i, 0, K - 1) {
-            Max[i] = max({d[i], ls->Max[i], rs->Max[i]});
-            Min[i] = min({d[i], ls->Min[i], rs->Min[i]});
-        }
-        sum = val + ls->sum + rs->sum;
-        rep(i, 0, K - 1) {
-            l[i] = min(d[i], min(ls->l[i], rs->l[i]));
-            r[i] = max(d[i], max(ls->r[i], rs->r[i]));
-        }
-        return ls->fa = rs->fa = this;
-    }
-} pool[M], *null = new P, *pit = pool;
-/*void upd(P* o, int val) {
-    o->val = val;
-    for (; o != null; o = o->fa)
-        o->Max = max(o->Max, val);
-}*/
-static P *tmp[M], **pt;
-void init() {
-    null->ls = null->rs = null;
-    rep(i, 0, K - 1) null->l[i] = inf, null->r[i] = -inf;
-    null->Max[0] = null->Max[1] = -inf;
-    null->Min[0] = null->Min[1] = inf;
-    null->val = 0;
-    null->sum = 0;
-}
-P* build(P** l, P** r, int d = 0) { // [l, r)
-    if (d == K) d = 0;
-    if (l >= r) return null;
-    P** m = l + (r - l) / 2; assert(l <= m && m < r);
-    nth_element(l, m, r, [&](const P * a, const P * b) {
-        return a->d[d] < b->d[d];
-    });
-    P* o = *m;
-    o->ls = build(l, m, d + 1); o->rs = build(m + 1, r, d + 1);
-    return o->up();
-}
-P* Build() {
-    pt = tmp; for (auto it = pool; it < pit; it++) *pt++ = it;
-    P* ret = build(tmp, pt); ret->fa = null;
-    return ret;
-}
-inline bool inside(int p[], int q[], int l[], int r[]) {
-    rep(i, 0, K - 1) if (r[i] < q[i] || p[i] < l[i]) return false;
-    return true;
-}
-/*int query(P* o, int l[], int r[]) {
-    if (o == null) return 0;
-    rep(i, 0, K - 1) if (o->r[i] < l[i] || r[i] < o->l[i]) return 0;
-    if (inside(o->l, o->r, l, r)) return o->Max;
-    int ret = 0;
-    if (o->val > ret && inside(o->d, o->d, l, r)) ret = max(ret, o->val);
-    if (o->ls->Max > ret) ret = max(ret, query(o->ls, l, r));
-    if (o->rs->Max > ret) ret = max(ret, query(o->rs, l, r));
-    return ret;
-}
-ll eval(P* o, int d[]) { ... }
-ll dist(int d1[], int d2[]) { ... }
-ll S;
-ll query(P* o, int d[]) {
-    if (o == null) return 0;
-    S = max(S, dist(o->d, d));
-    ll mdl = eval(o->ls, d), mdr = eval(o->rs, d);
-    if (mdl < mdr) {
-        if (S > mdl) S = max(S, query(o->ls, d));
-        if (S > mdr) S = max(S, query(o->rs, d));
-    } else {
-        if (S > mdr) S = max(S, query(o->rs, d));
-        if (S > mdl) S = max(S, query(o->ls, d));
-    }
-    return S;
-}*/
-bool check(ll x, ll y, ll a, ll b, ll c) { return a * x + b * y < c; }
+	const int K = 2, N = 2.1e5;
+	template <typename T>
+	using P = array<T, K>;
+	template <typename T>
+	struct node {
+		P<T> pt, mx, mn;
+		ll val, sum;
+		node *l, *r, *p;
+		int id;
+		node(const P<T> &_pt = P<T>(), ll _val = 0, int _id = 0) : pt(_pt), val(_val), sum(_val), id(_id) {
+			mx = mn = pt;
+			p = l = r = nullptr;
+		}
+	};
+	node<ll> *ptr[N];
+	template <typename T>
+	void pull(node<T> *u) {
+		if (not u) return;
+		u->sum = u->val;
+		rep(i, 0, K - 1) u->mx[i] = u->mn[i] = u->pt[i];
+		if (u->l) {
+			u->sum += u->l->sum;
+			u->l->p = u;
+		}
+		if (u->r) {
+			u->sum += u->r->sum;
+			u->r->p = u;
+		}
+		rep(i, 0, K - 1) {
+			if (u->l) {
+				u->mx[i] = max(u->mx[i], u->l->mx[i]);
+				u->mn[i] = min(u->mn[i], u->l->mn[i]);
+			}
+			if (u->r) {
+				u->mx[i] = max(u->mx[i], u->r->mx[i]);
+				u->mn[i] = min(u->mn[i], u->r->mn[i]);
+			}
+		}
+	}
 
-ll query(P* o, ll a, ll b, ll c) {
-    if (o == null) return 0;
-    int chk = 0;
-    chk += check(o->Min[0], o->Min[1], a, b, c);
-    chk += check(o->Max[0], o->Min[1], a, b, c);
-    chk += check(o->Min[0], o->Max[1], a, b, c);
-    chk += check(o->Max[0], o->Max[1], a, b, c);
-    if (chk == 4) return o->sum;
-    if (chk == 0) return 0;
-    ll ret = 0;
-    if (check(o->d[0], o->d[1], a, b, c)) ret += o->val;
-    ret += query(o->ls, a, b, c);
-    ret += query(o->rs, a, b, c);
-    return ret;
-}
+	template <typename T>
+	node<T> *build(vector<node<T>> &a, int l, int r, int d = 0) {
+		if (d == K) d = 0;
+		if (l >= r) {
+			return nullptr;
+		} else {
+			int md = (l + r) >> 1;
+			nth_element(a.begin() + l, a.begin() + md, a.begin() + r, [&](node<T> &x, node<T> &y) { return x.pt[d] < y.pt[d]; });
+			node<T> *p = new node<T>(a[md]);
+			ptr[p->id] = p;
+			p->l = build(a, l, md, d + 1);
+			p->r = build(a, md + 1, r, d + 1);
+			pull(p);
+			return p;
+		}
+	}
+
+	template <typename T>
+	node<T> *search(node<T> *u, P<T> p, int d = 0) {
+		if (d == K) d = 0;
+		if (not u) return nullptr;
+		if (u->pt == p) return u;
+		if (p[d] < u->pt[d]) {
+			return search(u->l, p, d + 1);
+		} else if (p[d] > u->pt[d]) {
+			return search(u->r, p, d + 1);
+		} else {
+			auto tmp = search(u->l, p, d + 1);
+			if (tmp) return tmp;
+			return search(u->r, p, d + 1);
+		}
+	}
+
+	template <typename T>
+	void modify(node<T> *u, ll v) {
+		if (not u) return;
+		u->val = v;
+		for (auto cur = u; cur; cur = cur->p) {
+			pull(cur);
+		}
+	}
+
+	template <typename T>
+	bool inside(node<T> *nd, P<T> p, ll c) {
+		int cc = 0;
+		if (nd->mx[0] * p[0] + nd->mx[1] * p[1] >= c) cc++;
+		if (nd->mn[0] * p[0] + nd->mn[1] * p[1] >= c) cc++;
+		if (nd->mx[0] * p[0] + nd->mn[1] * p[1] >= c) cc++;
+		if (nd->mn[0] * p[0] + nd->mx[1] * p[1] >= c) cc++;
+		return cc == 0;
+	}
+
+	template <typename T>
+	bool outside(node<T> *nd, P<T> p, ll c) {
+		int cc = 0;
+		if (nd->mx[0] * p[0] + nd->mx[1] * p[1] >= c) cc++;
+		if (nd->mn[0] * p[0] + nd->mn[1] * p[1] >= c) cc++;
+		if (nd->mx[0] * p[0] + nd->mn[1] * p[1] >= c) cc++;
+		if (nd->mn[0] * p[0] + nd->mx[1] * p[1] >= c) cc++;
+		return cc == 4;
+	}
+
+	template <typename T>
+	ll query(node<T> *u, P<T> p, ll c) {
+		if (inside(u, p, c)) return u->sum;
+		if (outside(u, p, c)) return 0;
+		ll s = 0;
+		if (u->pt[0] * p[0] + u->pt[1] * p[1] < c) {
+			s += u->val;
+		}
+		if (u->l) s += query(u->l, p, c);
+		if (u->r) s += query(u->r, p, c);
+		return s;
+	}
+
+	template <typename T>
+	T eval_min(node<T> *nd, P<T> p) {  // 通过估价函数进行启发式搜索，根据当前结果对搜索剪枝
+		if (not nd) return numeric_limits<T>::max() / 4;
+		ll s = 0;
+		rep(i, 0, K - 1) {
+			if (p[i] <= nd->mn[i]) s += nd->mn[i] - p[i];
+			if (p[i] >= nd->mx[i]) s += p[i] - nd->mx[i];
+		}
+		return s;
+	}
+
+	template <typename T>
+	ll mindist(node<T> *u, P<T> p) {
+		ll s = numeric_limits<T>::max() / 4;
+		if (u->pt != p) {
+			s = min(s, abs(u->pt[0] - p[0]) + abs(u->pt[1] - p[1]));
+		}
+		ll best1 = eval_min(u->l, p), best2 = eval_min(u->r, p);
+		if (best1 < best2) {
+			if (u->l) s = min(s, mindist(u->l, p));
+			if (u->r and best2 < s) s = min(s, mindist(u->r, p));
+			return s;
+		} else {
+			if (u->r) s = min(s, mindist(u->r, p));
+			if (u->l and best1 < s) s = min(s, mindist(u->l, p));
+			return s;
+		}
+	}
+
+	template <typename T>
+	T eval_max(node<T> *nd, P<T> p) {  // 通过估价函数进行启发式搜索，根据当前结果对搜索剪枝
+		if (not nd) return 0;
+		ll s = 0;
+		rep(i, 0, K - 1) s += max(abs(nd->mx[i] - p[i]), abs(nd->mn[i] - p[i]));
+		return s;
+	}
+
+	template <typename T>
+	ll maxdist(node<T> *u, P<T> p) {
+		ll s = 0;
+		if (u->pt != p) {
+			s = max(s, abs(u->pt[0] - p[0]) + abs(u->pt[1] - p[1]));
+		}
+		ll best1 = eval_max(u->l, p), best2 = eval_max(u->r, p);
+		if (best1 > best2) {
+			if (u->l) s = max(s, maxdist(u->l, p));
+			if (u->r and best2 > s) s = max(s, maxdist(u->r, p));
+			return s;
+		} else {
+			if (u->r) s = max(s, maxdist(u->r, p));
+			if (u->l and best1 > s) s = max(s, maxdist(u->l, p));
+			return s;
+		}
+	}
 }  // namespace kd
-
-void solve() {
-    cin >> n >> m;
-    kd::init();
-    rep(i, 1, n) {
-        int x, y, w;
-        cin >> x >> y >> w;
-        kd::pit->d[0] = x, kd::pit->d[1] = y, kd::pit->val = w;
-        kd::pit++;
-    }
-    auto rt = kd::Build();
-    rep(i, 1, m) {
-        int a, b, c;
-        cin >> a >> b >> c;
-        cout << kd::query(rt, a, b, c) << '\n';
-    }
-}
