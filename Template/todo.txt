@@ -1,20 +1,15 @@
 Contest:
-    1.add .clang-format & debug.cpp & template.cpp & Makefile & settings.json to cp-lib
+    1.generate.py
 String:
-    1.merge ACAM
-    2.change SA into basic-version and O(n)-version
-    3.delete useless template
-    4.make it all 0-base
+    1.duval
 DS:
-    1.simplified LCT
-    2.merge treap and make it safer
-    3.fix Mo algo
-    4.fix some useless DS or just delete them
+    1.LCT
+    2.Mo
+    3.segt merge
 Math:
     1.format and fix all math template
     2.add some description
 Graph:
-    1.wrap graph template and write some description
 Geometry:
     1.format them
 Others:

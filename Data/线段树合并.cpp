@@ -1,94 +1,92 @@
-ll n, m, k;
-vector<int> e[maxn];
-int tot, col[maxn];
 struct node {
-    ll maxv, cnt, l, r;
-    node(): maxv(0), l(0), r(0), cnt(0) {}
-} seg[maxn * 20];
+	int sz, sum;
+	node *l, *r;
+	node() : sz(0), sum(0), l(nullptr), r(nullptr) {}
+} pool[N * 20], *cur = pool;
 
-void upd(int rt) {
-    if (seg[seg[rt].l].maxv > seg[seg[rt].r].maxv) {
-        seg[rt].maxv = seg[seg[rt].l].maxv;
-        seg[rt].cnt = seg[seg[rt].l].cnt;
-    } else if (seg[seg[rt].l].maxv < seg[seg[rt].r].maxv) {
-        seg[rt].maxv = seg[seg[rt].r].maxv;
-        seg[rt].cnt = seg[seg[rt].r].cnt;
-    } else {
-        seg[rt].maxv = seg[seg[rt].r].maxv;
-        seg[rt].cnt = seg[seg[rt].r].cnt + seg[seg[rt].l].cnt;
-    }
+node *newnode() {
+	return cur++;
 }
 
-int modify(int rt, int l, int r, int pos) {
-    if (rt == 0) rt = ++tot;
-    if (l == r) {
-        seg[rt].maxv++;
-        seg[rt].cnt = pos;
-    } else {
-        int mid = (l + r) >> 1;
-        if (pos <= mid)
-            seg[rt].l = modify(seg[rt].l, l, mid, pos);
-        else
-            seg[rt].r = modify(seg[rt].r, mid + 1, r, pos);
-        upd(rt);
-    }
-    return rt;
+void upd(node *rt) {
+	if (not rt) return;
+	rt->sum = rt->sz > 0;
+	if (rt->l) rt->sum += rt->l->sum;
+	if (rt->r) rt->sum += rt->r->sum;
 }
 
-int merge(int u, int v, int l, int r) {
-    if (!u) return v;
-    if (!v) return u;
-    if (l == r) {
-        seg[u].maxv += seg[v].maxv;
-        return u;
-    } else {
-        int mid = (l + r) >> 1;
-        seg[u].l = merge(seg[u].l, seg[v].l, l, mid);
-        seg[u].r = merge(seg[u].r, seg[v].r, mid + 1, r);
-        upd(u);
-        return u;
-    }
+node *modify(node *rt, int l, int r, int pos, int d) {
+	if (not rt) rt = newnode();
+	if (l == r) {
+		rt->sz += d;
+		upd(rt);
+		return rt;
+	} else {
+		int md = (l + r) >> 1;
+		if (pos <= md)
+			rt->l = modify(rt->l, l, md, pos, d);
+		else
+			rt->r = modify(rt->r, md + 1, r, pos, d);
+		upd(rt);
+		return rt;
+	}
 }
 
-ll query(int rt, int l, int r) {
-    return seg[rt].cnt;
+node *merge(node *u, node *v, int l, int r) {
+	if (not u) return v;
+	if (not v) return u;
+	if (l == r) {
+		u->sz += v->sz;
+		upd(u);
+		return u;
+	} else {
+		int md = (l + r) >> 1;
+		u->l = merge(u->l, v->l, l, md);
+		u->r = merge(u->r, v->r, md + 1, r);
+		upd(u);
+		return u;
+	}
 }
 
-void split(int &p, int &q, int s, int t, int l, int r) {
-    if (t < l || r < s) return;
-    if (!p) return;
-    if (l <= s && t <= r) {
-        q = p;
-        p = 0;
-        return;
-    }
-    if (!q) q = New();
-    int m = s + t >> 1;
-    if (l <= m) split(ls[p], ls[q], s, m, l, r);
-    if (m < r) split(rs[p], rs[q], m + 1, t, l, r);
-    push_up(p);
-    push_up(q);
+ll query(node *rt, int l, int r) {
+	if (not rt) return 0;
+	return rt->sum;
 }
 
-void solve() {
-    cin >> n;
-    vector<int> rt(n + 1);
-    rep(i, 1, n) {
-        cin >> col[i];
-        rt[i] = modify(0, 1, n, col[i]);
-    }
-    rep(i, 2, n) {
-        int u, v; cin >> u >> v;
-        e[u].pb(v), e[v].pb(u);
-    }
-    vector<ll> ans(n + 1);
-    function<void(int, int)> dfs = [&](int u, int f) {
-        for (auto v : e[u]) if (v != f) {
-                dfs(v, u);
-                rt[u] = merge(rt[u], rt[v], 1, n);
-            }
-        ans[u] = query(rt[u], 1, n);
-    };
-    dfs(1, 0);
-    rep(i, 1, n) cout << ans[i] << " \n"[i == n];
+pair<node *, node *> split(node *rt, int l, int r, int ql, int qr) {
+	if (not rt) return {nullptr, nullptr};
+	if (ql == l && qr == r) {
+		return {nullptr, rt};
+	} else {
+		int md = (l + r) >> 1;
+		if (qr <= md) {
+			auto [p1, p2] = split(rt->l, l, md, ql, qr);
+			rt->l = p1;
+			upd(rt);
+			if (not p2) return {rt, nullptr};
+			node *u = newnode();
+			u->l = p2;
+			upd(u);
+			return {rt, u};
+		} else if (ql > md) {
+			auto [p1, p2] = split(rt->r, md + 1, r, ql, qr);
+			rt->r = p1;
+			upd(rt);
+			if (not p2) return {rt, nullptr};
+			node *u = newnode();
+			u->r = p2;
+			upd(u);
+			return {rt, u};
+		} else {
+			auto [p1, p2] = split(rt->l, l, md, ql, md);
+			auto [p3, p4] = split(rt->r, md + 1, r, md + 1, qr);
+			rt->l = p1, rt->r = p3;
+			upd(rt);
+			if (not p2 and not p4) return {rt, nullptr};
+			node *u = newnode();
+			u->l = p2, u->r = p4;
+			upd(u);
+			return {rt, u};
+		}
+	}
 }
