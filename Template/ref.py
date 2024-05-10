@@ -13,7 +13,8 @@ def get_cpp_and_python_files(directory):
     files = []
     for entry in os.scandir(directory):
         if entry.is_file():
-            files.append(entry.name)
+            if entry.name.endswith(".cpp") or entry.name.endswith(".py"):
+                files.append(entry.name)
         elif entry.is_dir():
             files.extend(get_cpp_and_python_files(entry.path))  # 递归处理子文件夹
     return files
@@ -31,7 +32,7 @@ files = get_cpp_and_python_files(current_dir)
 with open("main.tex", "w", encoding="utf-8") as f:  # 添加 encoding="utf-8"
     f.write("\\section{" + current_dir_name + "}\n\n")
     for file in files:
-        if file == 'ref.py' or file == 'todo.txt':
+        if file == 'ref.py':
             continue
         f.write("\\subsection{" + file + "}\n")
         f.write("\\include{" + current_dir_name + "/" + file + "}\n\n")
