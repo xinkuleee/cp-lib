@@ -1,39 +1,38 @@
 // u * 1 = e, phi * 1 = id, phi = id * u
-int n = 1e7 + 15, m1, m2;
-int pr[maxn], p[maxn], pe[maxn], u[maxn], tot;
-int su[maxn];
-int main() {
-    p[1] = 1;
-    for (int i = 2; i <= n; i++) {
-        if (!p[i]) pe[i] = i, p[i] = i, pr[++tot] = i;
-        for (int j = 1; j <= tot && pr[j]*i <= n; j++) {
-            p[pr[j]*i] = pr[j];
-            if (pr[j] == p[i]) {
-                pe[pr[j]*i] = pe[i] * p[i];
-                break;
-            } else {
-                pe[pr[j]*i] = pr[j];
-            }
-        }
-    }
-    u[1] = 1;
-    for (int i = 2; i <= n; i++) {
-        if (i == pe[i]) {
-            if (i == p[i]) u[i] = -1;
-            else u[i] = 0;
-        } else {
-            u[i] = u[pe[i]] * u[i / pe[i]];
-        }
-    }
-    rep(i, 1, n) su[i] = su[i - 1] + u[i];
+const int N = 10100000, M = 10000000;
+int p[N], pr[N / 5], n, tot;
+int mu[N], smu[N];
 
-    cin >> m1 >> m2;
-    ll ans = 0;
-    for (int l = 1; l <= m1 && l <= m2; l++) {
-        int d1 = m1 / l, d2 = m2 / l;
-        int r = min(m1 / d1, m2 / d2);
-        ans += 1ll * (m1 / l) * (m2 / l) * (su[r] - su[l - 1]);
-        l = r;
-    }
-    cout << ans << '\n';
+int main() {
+	p[1] = 1; mu[1] = 1;
+	for (int i = 2; i <= M; i++) {
+		if (!p[i]) p[i] = i, mu[i] = -1, pr[++tot] = i;
+		for (int j = 1; j <= tot && pr[j] * i <= M; j++) {
+			p[i * pr[j]] = pr[j];
+			if (p[i] == pr[j]) {
+				mu[i * pr[j]] = 0;
+				break;
+			} else {
+				mu[i * pr[j]] = -mu[i];
+			}
+		}
+	}
+	for (int i = 1; i <= M; i++)
+		smu[i] = smu[i - 1] + mu[i];
+	int T;
+	scanf("%d", &T);
+	for (int tc = 0; tc < T; tc++) {
+		int n, m;
+		scanf("%d%d", &n, &m);
+		if (n > m) swap(n, m);
+		ll ans = 0;
+		for (int l = 1; l <= n; l++) {
+			int n1 = n / l, m1 = m / l;
+			int r = min(n / n1, m / m1);
+			// l ... r
+			ans += 1ll * (smu[r] - smu[l - 1]) * n1 * m1;
+			l = r;
+		}
+		printf("%lld\n", ans);
+	}
 }

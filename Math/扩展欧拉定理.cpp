@@ -1,4 +1,4 @@
-// mod [min(b, b % phi + phi)]
+// mod {min(b, b % phi + phi)}
 ll calc(ll p) {  
     if (p == 1) return 0;
     int phi = p, q = p;

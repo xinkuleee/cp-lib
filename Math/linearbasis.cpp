@@ -40,8 +40,8 @@ struct linear_base {
     }
     ll query(ll k) {
         ll res = 0;
-        // if(zero) k-=1;
-        // if(k>=bit(tot)) return -1;
+        // if (zero) k-=1;
+        // if (k >= bit(tot)) return -1;
         for (int i = tot; i >= 0; i--) {
             if (k & bit(i)) {
                 res = max(res, res ^ w[i]);

@@ -1,52 +1,51 @@
-// 因子个数, 因子和, 欧拉函数, 莫比乌斯函数
-uint d[maxn], f[maxn], phip[maxn], u[maxn];
-uint p[maxn], pe[maxn], prime[maxn];
-uint tot;
-void solve() {
-    p[1] = 1;
-    for (uint i = 2; i <= n; i++) {
-        if (!p[i]) p[i] = i, pe[i] = i, prime[++tot] = i;
-        for (uint j = 1; j <= tot && prime[j]*i <= n; j++) {
-            p[prime[j]*i] = prime[j];
-            if (prime[j] == p[i]) {
-                pe[prime[j]*i] = pe[i] * p[i];
-                break;
-            } else {
-                pe[prime[j]*i] = prime[j];
-            }
-        }
-    }
+const int N = 20010000;
+int p[N], pr[N / 5], n, pe[N], tot;
+uint f[N], a, b, ans;
 
-    d[1] = 1;
-    for (uint i = 2; i <= n; i++) {
-        if (i == pe[i])
-            d[i] = d[i / p[i]] + 1;
-        else
-            d[i] = d[i / pe[i]] * d[pe[i]];
-    }
+void compute(int n, function<void(int)> calcpe) {
+	ans = 0;
+	f[1] = 1;
+	for (int i = 2; i <= n; i++) {
+		if (i == pe[i])
+			calcpe(i);
+		else
+			f[i] = f[pe[i]] * f[i / pe[i]];
+	}
+	for (uint i = 1; i <= n; i++) {
+		ans ^= (a * i * f[i] + b);
+	}
+	printf("%u\n", ans);
+}
 
-    f[1] = 1;
-    for (uint i = 2; i <= n; i++) {
-        if (i == pe[i])
-            f[i] = f[i / p[i]] + i;
-        else
-            f[i] = f[i / pe[i]] * f[pe[i]];
-    }
+int main() {
+	scanf("%d%u%u", &n, &a, &b);
+	p[1] = 1;
+	for (int i = 2; i <= n; i++) {
+		if (!p[i]) p[i] = i, pe[i] = i, pr[++tot] = i;
+		for (int j = 1; j <= tot && pr[j] * i <= n; j++) {
+			p[i * pr[j]] = pr[j];
+			if (p[i] == pr[j]) {
+				pe[i * pr[j]] = pe[i] * pr[j];
+				break;
+			} else {
+				pe[i * pr[j]] = pr[j];
+			}
+		}
+	}
+	// 因子个数, 因子和, 欧拉函数, 莫比乌斯函数
+	compute(n, [&](int x) {
+		f[x] = f[x / p[x]] + 1;
+	});
 
-    phip[1] = 1;
-    for (uint i = 2; i <= n; i++) {
-        if (i == pe[i])
-            phip[i] = i / p[i] * (p[i] - 1);
-        else
-            phip[i] = phip[i / pe[i]] * phip[pe[i]];
-    }
+	compute(n, [&](int x) {
+		f[x] = f[x / p[x]] + x;
+	});
 
-    u[1] = (uint)1;
-    for (uint i = 2; i <= n; i++) {
-        if (i == pe[i])
-            if (i == p[i]) u[i] = (uint) - 1;
-            else u[i] = (uint)0;
-        else
-            u[i] = u[i / pe[i]] * u[pe[i]];
-    }
+	compute(n, [&](int x) {
+		f[x] = x / p[x] * (p[x] - 1);
+	});
+
+	compute(n, [&](int x) {
+		f[x] = x == p[x] ? -1 : 0;
+	});
 }
