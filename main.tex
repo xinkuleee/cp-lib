@@ -1,0 +1,59 @@
+\documentclass[8pt]{article}
+\usepackage[UTF8]{ctex}
+\usepackage[hidelinks]{hyperref}
+\usepackage{amsmath}
+\usepackage{markdown}
+\usepackage{listings}
+\renewcommand{\include}[1]{
+    % \pdfmdfivesum file {#1}
+    \lstinputlisting{#1}
+}
+
+\usepackage[a4paper, landscape]{geometry}
+\geometry{
+    left   = 30pt,
+    right  = 30pt,
+    top    = 30pt,
+    bottom = 30pt
+}
+\usepackage{fancyhdr}
+\pagestyle{plain}
+\setcounter{page}{0}
+
+\usepackage{multicol}
+\setlength\parindent{0pt}
+\setlength{\columnsep}{50pt}
+\setlength{\columnseprule}{0.5pt}
+\setcounter{tocdepth}{1}
+
+
+\title{Team Reference Document}
+\author{Heltion}
+
+\lstset{
+    language    = C++,Python,
+    basicstyle  = \tt\footnotesize,
+    numbers     = left,
+    numberstyle = \footnotesize,
+    frame       = t,
+    aboveskip   = 0pt,
+    belowskip   = 0pt,
+    breaklines
+}
+
+\begin{document}
+\maketitle
+\newpage
+\setcounter{page}{1}
+\begin{multicols}{2}
+    \tableofcontents
+    \input{Template/main}
+    \input{Data/main}
+    \input{DP/main}
+    \input{Geometry/main}
+    \input{Graph/main}
+    \input{Math/main}
+    \input{String/main}
+    \input{Basic/main}
+\end{multicols}
+\end{document}
