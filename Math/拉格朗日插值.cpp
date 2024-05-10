@@ -1,8 +1,6 @@
-/*
-    k阶多项式(需要k+1个点)
-    求在点n上的值 
-    O(k)
-*/
+// k阶多项式(需要k+1个点)
+// 求在点n上的值
+// O(k)
 ll lagrange(ll n,int k) {
     vector<ll> x(k+5),y(k+5);
     rep(i,1,k+1) {

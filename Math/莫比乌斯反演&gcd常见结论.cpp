@@ -1,7 +1,7 @@
+// u * 1 = e, phi * 1 = id, phi = id * u
 int n = 1e7 + 15, m1, m2;
 int pr[maxn], p[maxn], pe[maxn], u[maxn], tot;
 int su[maxn];
-/*  u * 1 = e, phi * 1 = id, phi = id * u  */
 int main() {
     p[1] = 1;
     for (int i = 2; i <= n; i++) {

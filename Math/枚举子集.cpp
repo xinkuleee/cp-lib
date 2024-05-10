@@ -1,5 +1,4 @@
 void solve() {
-    cin >> n;
     f[0] = 1;
     for (int i = 1; i < (1ll << n); i++) {
         int t = i;

@@ -1,6 +1,6 @@
 ll comb[N][N];
 ll s[maxn],inv[maxn],p;
-/* 1^k+2^k+...+n^k */
+// 1^k+2^k+...+n^k
 void solve() {
     cin>>k>>n>>p;
     rep(i,0,k+1) {

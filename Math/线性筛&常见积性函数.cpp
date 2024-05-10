@@ -1,6 +1,6 @@
-uint p[maxn], pe[maxn], prime[maxn]; 
-// 因子个数  因子和  欧拉函数  莫比乌斯函数
+// 因子个数, 因子和, 欧拉函数, 莫比乌斯函数
 uint d[maxn], f[maxn], phip[maxn], u[maxn];
+uint p[maxn], pe[maxn], prime[maxn];
 uint tot;
 void solve() {
     p[1] = 1;
