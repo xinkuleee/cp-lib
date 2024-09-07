@@ -1,7 +1,8 @@
 class Solution:
 	def calculate(self, s: str) -> int:
 		sign = ['+', '-', '*', '/', '(', ')']
-		v = []; num = ''
+		v = []
+		num = ''
 		for c in s:
 			if c in sign:
 				if num:
@@ -13,7 +14,8 @@ class Solution:
 				num += c
 		if num: v.append(num)
 
-		stk0 = []; stk1 = []
+		stk0 = []
+		stk1 = []
 		for e in v:
 			if e.isnumeric():
 				stk0.append(e)
