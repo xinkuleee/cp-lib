@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.10.19)  7 SEP 2024 20:56
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.10.19)  22 SEP 2024 20:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -797,7 +797,7 @@ l.32 ...; for larger numbers, use Python and ex^^B
 A funny symbol that I can't read has just been input.
 Continue, and I'll forget that it ever happened.
 
-) (./Math/ntt(polynomial).cpp [68] [69] [70] [71] [72] [73]) (./Math/区间互质.cpp) (./Math/幂转下降幂(求幂和).cpp) [74] (./Math/扩展欧拉定理.cpp) (./Math/拉格朗日插值.cpp) (./Math/整除分块.cpp) (./Math/枚举子集.cpp) (./Math/枚举超集.cpp) [75] (./Math/狄利克雷卷积.cpp) (./Math/线性筛&常见积性函数.cpp [76]) (./Math/莫比乌斯反演&gcd常见结论.cpp)) (./String/main.tex (./String/ACAM.cpp [77]) (./String/hash61.cpp [78]) (./String/kmp.cpp) (./String/manacherfast.cpp [79]) (./String/MinRotation.cpp) (./String/rollingHash.cpp) (./String/SA.cpp [80]) (./String/SAfast.cpp [81]) (./String/SAM.cpp [82]) (./String/SA_IS.cpp [83] [84]) (./String/Z.cpp)) (./Basic/main.tex (./Basic/AST.py [85]) (./Basic/bitset.cpp [86]) (./Basic/fastIO.cpp [87] [88]) (./Basic/FastMod.cpp) (./Basic/intervalContainer.cpp [89]) (./Basic/lineContainer.cpp) (./Basic/mint.cpp [90]) (./Basic/pbds.cpp) (./Basic/simu.cpp [91]) (./Basic/sort.cpp) (./Basic/高精度.cpp [92])) [93] (./main.aux)
+) (./Math/ntt(polynomial).cpp [68] [69] [70] [71] [72] [73]) (./Math/区间互质.cpp) (./Math/幂转下降幂(求幂和).cpp) [74] (./Math/扩展欧拉定理.cpp) (./Math/拉格朗日插值.cpp) (./Math/整除分块.cpp) (./Math/枚举子集.cpp) (./Math/枚举超集.cpp) [75] (./Math/狄利克雷卷积.cpp) (./Math/线性筛&常见积性函数.cpp [76]) (./Math/莫比乌斯反演&gcd常见结论.cpp)) (./String/main.tex (./String/ACAM.cpp [77]) (./String/hash61.cpp [78]) (./String/kmp.cpp) (./String/manacherfast.cpp [79]) (./String/MinRotation.cpp) (./String/PAM.cpp [80]) (./String/rollingHash.cpp) (./String/SA.cpp [81]) (./String/SAfast.cpp [82]) (./String/SAM.cpp [83]) (./String/SA_IS.cpp [84]) (./String/Z.cpp [85])) (./Basic/main.tex (./Basic/AST.py) (./Basic/bitset.cpp [86]) (./Basic/fastIO.cpp [87] [88] [89]) (./Basic/FastMod.cpp) (./Basic/intervalContainer.cpp) (./Basic/lineContainer.cpp [90]) (./Basic/mint.cpp [91]) (./Basic/pbds.cpp) (./Basic/simu.cpp) (./Basic/sort.cpp [92]) (./Basic/高精度.cpp [93])) [94] (./main.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -811,12 +811,12 @@ Package rerunfilecheck Info: Checksums for `main.out':
 (rerunfilecheck)             After:  646F2101E815F1DE0BB91CE6014E4769;554.
  ) 
 Here is how much of TeX's memory you used:
- 23409 strings out of 476683
- 499869 string characters out of 5807574
+ 23424 strings out of 476683
+ 500026 string characters out of 5807574
  2540012 words of memory out of 5000000
- 42954 multiletter control sequences out of 15000+600000
+ 42966 multiletter control sequences out of 15000+600000
  519342 words of font info for 84 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  89i,6n,97p,400b,1944s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.pdf (94 pages).
+Output written on main.pdf (95 pages).
