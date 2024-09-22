@@ -1,42 +1,54 @@
 template <typename T>
 struct BIT {
-	vector<T> fenw;
-	int n;
+  vector<T> fenw;
+  int n, pw;
 
-	BIT(int _n = 0) : n(_n) {
-		fenw.assign(n + 1, 0);
-	}
+  BIT(int n_ = 0) : n(n_) {
+    fenw.assign(n + 1, 0);
+    pw = bit_floor(unsigned(n));
+  }
 
-	T query(int x) {
-		T v{};
-		// while (x >= 0) {
-		while (x > 0) {
-			v += fenw[x];
-			x -= (x & -x);
-			// x = (x & (x + 1)) - 1;
-		}
-		return v;
-	}
+  void Modify(int x, T v) {
+    if (x <= 0) return;  // assert(0 <= x && x < n);
+    while (x <= n) {     // x < n
+      fenw[x] += v;
+      x += (x & -x);  // x |= x + 1;
+    }
+  }
 
-	void modify(int x, T v) {
-		if (x <= 0) return;  // 1-base
-		// while (x < n) {
-		while (x <= n) {
-			fenw[x] += v;
-			x += (x & -x);
-			// x |= (x + 1);
-		}
-	}
+  T Query(int x) {
+    // assert(0 <= x && x <= n);
+    T v{};
+    while (x > 0) {
+      v += fenw[x];   // fenw[x - 1];
+      x -= (x & -x);  // x &= x - 1;
+    }
+    return v;
+  }
 
-	int kth(T d) {  // 1-base
-		int p = 0;
-		T sum{};
-		for (int i = 20; i >= 0; i--) {
-			if (p + bit(i) <= n && sum + fenw[p + bit(i)] <= d) {
-				sum += fenw[p + bit(i)];
-				p += bit(i);
-			}
-		}
-		return p;
-	}
+  // Returns the length of the longest prefix with sum <= c
+  int MaxPrefix(T c) {
+    T v{};
+    int at = 0;
+    for (int i = 20; i >= 0; i--) {
+      if (at + bit(i) <= n && v + fenw[at + bit(i)] <= c) {
+        v += fenw[at + bit(i)];
+        at += bit(i);
+      }
+    }
+    /**
+     * for (int len = pw; len > 0; len >>= 1) {
+     *   if (at + len <= n) {
+     *     auto nv = v;
+     *     nv += fenw[at + len - 1];
+     *     if (!(c < nv)) {
+     *       v = nv;
+     *       at += len;
+     *     }
+     *   }
+     * }
+     * assert(0 <= at && at <= n);
+     */
+    return at;
+  }
 };
