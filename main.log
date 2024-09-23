@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.10.19)  22 SEP 2024 20:31
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.10.19)  23 SEP 2024 09:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -774,20 +774,20 @@ Package fontspec Info: Font family 'FangSong(0)' created for font 'FangSong'
  (./Template/.clang-format) (./Template/debug.cpp
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <8> not available
 (Font)              Font shape `TU/lmtt/b/n' tried instead on input line 1.
-) (./Template/gen.py) (./Template/head.cpp [1]) (./Template/head_apiadu.cpp) (./Template/Makefile) (./Template/pai.py) (./Template/settings.json) (./Template/template.cpp [2])) (./Data/main.tex (./Data/01trie.cpp) (./Data/2dtree(bqi343).cpp [3] [4]) (./Data/cdq.cpp) (./Data/compact.cpp [5]) (./Data/dominator.cpp [6]) (./Data/dsu.cpp) (./Data/dsu_on_tree.cpp) (./Data/fenwick.cpp [7]) (./Data/fenwick2d.cpp) (./Data/hash_table.cpp [8]) (./Data/HLD.cpp [9]) (./Data/kdtree.cpp [10] [11]
+) (./Template/gen.py) (./Template/head.cpp [1]) (./Template/head_apiadu.cpp) (./Template/Makefile) (./Template/pai.py) (./Template/settings.json) (./Template/template.cpp [2])) (./Data/main.tex (./Data/01trie.cpp) (./Data/2dtree(bqi343).cpp [3] [4]) (./Data/cdq.cpp) (./Data/compact.cpp [5]) (./Data/dominator.cpp [6]) (./Data/dsu.cpp) (./Data/dsu_on_tree.cpp) (./Data/fenwick.cpp [7]) (./Data/fenwick2d.cpp [8]) (./Data/hash_table.cpp) (./Data/HLD.cpp [9]) (./Data/kdtree.cpp [10] [11]
 
 LaTeX Font Warning: Font shape `TU/FangSong(0)/m/it' undefined
 (Font)              using `TU/FangSong(0)/m/n' instead on input line 118.
 
-) (./Data/LCT.cpp [12] [13]) (./Data/Mo.cpp [14]) (./Data/moTree.cpp
+) [12] (./Data/LCT.cpp [13]) (./Data/Mo.cpp [14]) (./Data/moTree.cpp
 Missing character: There is no ∼ (U+223C) in font [lmmono10-italic]:!
 Missing character: There is no ∼ (U+223C) in font [lmmono10-italic]:!
-) (./Data/MSTMo.cpp [15] [16]) (./Data/psegt.cpp [17]) (./Data/rollbackMo.cpp [18]) (./Data/segtree.cpp [19]) (./Data/segtreefast.cpp) (./Data/SparseTable.cpp [20]) (./Data/SparseTable2D.cpp) (./Data/treap.cpp [21] [22] [23] [24] [25]) (./Data/树哈希.cpp) (./Data/树链剖分&segtree.cpp [26]
+) (./Data/MSTMo.cpp [15] [16]) (./Data/psegt.cpp [17]) (./Data/rollbackMo.cpp [18]) (./Data/segtree.cpp [19]) (./Data/segtreefast.cpp) (./Data/SparseTable.cpp [20]) (./Data/SparseTable2D.cpp) (./Data/treap.cpp [21] [22] [23] [24] [25]) (./Data/树哈希.cpp) [26] (./Data/树链剖分&segtree.cpp
 Missing character: There is no ‼ (U+203C) in font [lmmono10-italic]:!
 [27]) (./Data/笛卡尔树.cpp) (./Data/线段树合并.cpp [28])) (./DP/main.tex (./DP/Convex hull optimization.cpp [29]) (./DP/DivideAndConquerDP.cpp) (./DP/有依赖决策单调.cpp)) (./Geometry/main.tex (./Geometry/1 (1).cpp [30]
 Missing character: There is no ⚠ (U+26A0) in font [lmmono10-italic]:!
 Missing character: There is no ️ (U+FE0F) in font FangSong/OT:script=hani;language=dflt;!
-[31]) (./Geometry/1 (2).cpp [32]) (./Geometry/1 (3).cpp [33]) (./Geometry/all.cpp [34] [35] [36] [37] [38]) (./Geometry/圆面积并.cpp)) (./Graph/main.tex [39] (./Graph/bellmanford.cpp) (./Graph/BlockCutTree.cpp [40]) (./Graph/dijfast.cpp) (./Graph/dijkstra.cpp) [41] (./Graph/dinic.cpp) (./Graph/dinic_tourist.cpp [42] [43]) (./Graph/eulerian_digraph.cpp) (./Graph/eulerian_undigraph.cpp [44]) (./Graph/hungarian.cpp) (./Graph/KM.cpp [45]) (./Graph/kosaraju.cpp [46]) (./Graph/MCMF.cpp [47]) (./Graph/MCMFfast.cpp [48]) (./Graph/MCMFfull.cpp [49] [50]) (./Graph/prim.cpp) (./Graph/PushRelabel.cpp [51]) (./Graph/tarjan割点.cpp) (./Graph/tarjan割边.cpp [52]) (./Graph/tarjan强连通分量.cpp) (./Graph/tarjan点双.cpp) (./Graph/tarjan边双.cpp [53]) (./Graph/twosat.cpp) (./Graph/差分约束系统.cpp [54])) (./Math/main.tex (./Math/binom.cpp) (./Math/bsgs.cpp [55]) (./Math/cantor.cpp) (./Math/EXCRT&modequ&exgcd.cpp) (./Math/factor.cpp [56] [57]) (./Math/fft.cpp [58] [59]) (./Math/fftfast.cpp [60] [61]) (./Math/fftnew.cpp [62] [63]) (./Math/FST.cpp) (./Math/FWT.cpp [64]) (./Math/gauss(合数).cpp) (./Math/gauss.cpp) (./Math/linearbasis.cpp [65]) (./Math/lucas.cpp) (./Math/mathdiv.cpp [66]) (./Math/matrix.cpp) (./Math/matrixfast.cpp [67]) (./Math/MillerRabbin&pollard&modmul.cpp
+[31]) (./Geometry/1 (2).cpp [32]) (./Geometry/1 (3).cpp [33] [34]) (./Geometry/all.cpp [35] [36] [37] [38]) (./Geometry/圆面积并.cpp [39])) (./Graph/main.tex (./Graph/bellmanford.cpp) (./Graph/BlockCutTree.cpp [40]) (./Graph/dijfast.cpp) (./Graph/dijkstra.cpp [41]) (./Graph/dinic.cpp) (./Graph/dinic_tourist.cpp [42] [43]) (./Graph/eulerian_digraph.cpp [44]) (./Graph/eulerian_undigraph.cpp) (./Graph/hungarian.cpp [45]) (./Graph/KM.cpp [46]) (./Graph/kosaraju.cpp) (./Graph/MCMF.cpp [47]) (./Graph/MCMFfast.cpp [48]) (./Graph/MCMFfull.cpp [49] [50]) (./Graph/prim.cpp) (./Graph/PushRelabel.cpp [51]) (./Graph/tarjan割点.cpp) (./Graph/tarjan割边.cpp [52]) (./Graph/tarjan强连通分量.cpp) (./Graph/tarjan点双.cpp [53]) (./Graph/tarjan边双.cpp) (./Graph/twosat.cpp) (./Graph/差分约束系统.cpp [54])) (./Math/main.tex (./Math/binom.cpp) (./Math/bsgs.cpp [55]) (./Math/cantor.cpp) (./Math/EXCRT&modequ&exgcd.cpp) [56] (./Math/factor.cpp [57]) (./Math/fft.cpp [58] [59]) (./Math/fftfast.cpp [60] [61]) (./Math/fftnew.cpp [62] [63]) (./Math/FST.cpp) (./Math/FWT.cpp [64]) (./Math/gauss(合数).cpp) (./Math/gauss.cpp [65]) (./Math/linearbasis.cpp) (./Math/lucas.cpp) [66] (./Math/mathdiv.cpp) (./Math/matrix.cpp) (./Math/matrixfast.cpp [67]) (./Math/MillerRabbin&pollard&modmul.cpp
 Missing character: There is no ≤ (U+2264) in font [lmmono10-italic]:!
 Missing character: There is no ≤ (U+2264) in font [lmmono10-italic]:!
 Missing character: There is no ≤ (U+2264) in font [lmmono10-italic]:!
@@ -797,7 +797,7 @@ l.32 ...; for larger numbers, use Python and ex^^B
 A funny symbol that I can't read has just been input.
 Continue, and I'll forget that it ever happened.
 
-) (./Math/ntt(polynomial).cpp [68] [69] [70] [71] [72] [73]) (./Math/区间互质.cpp) (./Math/幂转下降幂(求幂和).cpp) [74] (./Math/扩展欧拉定理.cpp) (./Math/拉格朗日插值.cpp) (./Math/整除分块.cpp) (./Math/枚举子集.cpp) (./Math/枚举超集.cpp) [75] (./Math/狄利克雷卷积.cpp) (./Math/线性筛&常见积性函数.cpp [76]) (./Math/莫比乌斯反演&gcd常见结论.cpp)) (./String/main.tex (./String/ACAM.cpp [77]) (./String/hash61.cpp [78]) (./String/kmp.cpp) (./String/manacherfast.cpp [79]) (./String/MinRotation.cpp) (./String/PAM.cpp [80]) (./String/rollingHash.cpp) (./String/SA.cpp [81]) (./String/SAfast.cpp [82]) (./String/SAM.cpp [83]) (./String/SA_IS.cpp [84]) (./String/Z.cpp [85])) (./Basic/main.tex (./Basic/AST.py) (./Basic/bitset.cpp [86]) (./Basic/fastIO.cpp [87] [88] [89]) (./Basic/FastMod.cpp) (./Basic/intervalContainer.cpp) (./Basic/lineContainer.cpp [90]) (./Basic/mint.cpp [91]) (./Basic/pbds.cpp) (./Basic/simu.cpp) (./Basic/sort.cpp [92]) (./Basic/高精度.cpp [93])) [94] (./main.aux)
+[68]) (./Math/ntt(polynomial).cpp [69] [70] [71] [72] [73]) (./Math/区间互质.cpp) (./Math/幂转下降幂(求幂和).cpp [74]) (./Math/扩展欧拉定理.cpp) (./Math/拉格朗日插值.cpp) (./Math/整除分块.cpp) (./Math/枚举子集.cpp) [75] (./Math/枚举超集.cpp) (./Math/狄利克雷卷积.cpp) (./Math/线性筛&常见积性函数.cpp [76]) (./Math/莫比乌斯反演&gcd常见结论.cpp)) (./String/main.tex (./String/ACAM.cpp [77]) (./String/hash61.cpp [78]) (./String/kmp.cpp [79]) (./String/manacherfast.cpp) (./String/MinRotation.cpp) (./String/PAM.cpp [80]) (./String/rollingHash.cpp) (./String/SA.cpp [81]) (./String/SAfast.cpp [82]) (./String/SAM.cpp [83]) (./String/SA_IS.cpp [84]) (./String/Z.cpp [85])) (./Basic/main.tex (./Basic/AST.py) (./Basic/bitset.cpp [86] [87]) (./Basic/fastIO.cpp [88] [89]) (./Basic/FastMod.cpp) (./Basic/intervalContainer.cpp) (./Basic/lineContainer.cpp [90]) (./Basic/mint.cpp [91]) (./Basic/pbds.cpp) (./Basic/simu.cpp [92]) (./Basic/sort.cpp) (./Basic/高精度.cpp [93])) [94] (./main.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -811,10 +811,10 @@ Package rerunfilecheck Info: Checksums for `main.out':
 (rerunfilecheck)             After:  646F2101E815F1DE0BB91CE6014E4769;554.
  ) 
 Here is how much of TeX's memory you used:
- 23424 strings out of 476683
- 500026 string characters out of 5807574
- 2540012 words of memory out of 5000000
- 42966 multiletter control sequences out of 15000+600000
+ 23428 strings out of 476683
+ 500088 string characters out of 5807574
+ 2541012 words of memory out of 5000000
+ 42970 multiletter control sequences out of 15000+600000
  519342 words of font info for 84 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  89i,6n,97p,400b,1944s stack positions out of 10000i,1000n,20000p,200000b,200000s
