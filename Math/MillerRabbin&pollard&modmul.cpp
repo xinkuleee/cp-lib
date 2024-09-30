@@ -29,7 +29,7 @@ ll modpow(ll a, ll b, ll p) {
 }
 /*MillerRabin.h
 Description: Deterministic Miller-Rabin primality test. Guaranteed to
-work for numbers up to 7 · 1018; for larger numbers, use Python and extend A randomly.
+work for numbers up to 7 · 1018; for larger numbers, use Python and extend A randomly.
 Time: 7 times the complexity of a^b mod c.*/
 bool isPrime(ll n) {
     if (n < 2 || n % 6 % 4 != 1) return (n | 1) == 3;
