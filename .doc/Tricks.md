@@ -99,14 +99,14 @@ for (int i = 1; i < N; ++i) {
 
 10. Series:
 
-    1. $$e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + ...$$
-    2. $$ln(1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + ...$$
-    3. $$\sqrt{1+x} = 1 + \frac{x}{2} - \frac{x^2}{8} + \frac{2x^3}{32} - \frac{5x^4}{128} + ...$$
-    4. $$\frac{1}{1-x} = \sum_{i \geq 0}x^i$$
-    5. $$\frac{1}{1-ax} = \sum_{i \geq 0}a^ix^i$$
-    6. $$\frac{1}{(1-x)^k} = \sum_{i \geq 0} \tbinom{i+k-1}{i} x^i$$
-    7. $$(1+x)^k = \sum_{n \geq 0} \tbinom{k}{n} x^n$$
-    8. $$log(P(x)) = \int \frac{P'(x)}{P(x)}$$
+  1. $$e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + ...$$
+  2. $$ln(1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + ...$$
+  3. $$\sqrt{1+x} = 1 + \frac{x}{2} - \frac{x^2}{8} + \frac{2x^3}{32} - \frac{5x^4}{128} + ...$$
+  4. $$\frac{1}{1-x} = \sum_{i \geq 0}x^i$$
+  5. $$\frac{1}{1-ax} = \sum_{i \geq 0}a^ix^i$$
+  6. $$\frac{1}{(1-x)^k} = \sum_{i \geq 0} \tbinom{i+k-1}{i} x^i$$
+  7. $$(1+x)^k = \sum_{n \geq 0} \tbinom{k}{n} x^n$$
+  8. $$log(P(x)) = \int \frac{P'(x)}{P(x)}$$
 
 11. 欧拉序求LCA:
 
@@ -175,3 +175,23 @@ for (int i = 1; i < N; ++i) {
     四边形不等式：交叉不大于包含，$$w(l,r')+w(l',r) \leq w(l,r)+w(l',r')$$。
 
     由四边形不等式可推导出$$1D/2D$$决策单调性。
+
+21. 因子个数上界
+
+    <img src="C:\Users\electricstick\Desktop\模板pdf\因子个数.jpg" alt="7cedfa747084971783fabc3829b5cfd" style="zoom:80%;" />
+
+22. 
+
+    <img src="C:\Users\electricstick\Desktop\模板pdf\table.jpg" alt="350d571ef3df4a2970672ecc01df01a" style="zoom:80%;" />
+
+23. Prime Table
+
+| 1e2      | 1e3      | 1e4      | 1e5      | 1e6      |
+| -------- | -------- | -------- | -------- | -------- |
+| 1,3,7    | 9,13,19  | 7,9,37   | 3,19     | 3,33,37  |
+| **1e7**  | **1e8**  | **1e9**  | **1e10** | **1e11** |
+| 19,79    | 7,37,39  | 9,21,93  | 19,33,69 | 3,63,69  |
+| **1e12** | **1e13** | **1e14** | **1e15** | **1e16** |
+| 39,91    | 37,99    | 31,97    | 37,91    | 69,99    |
+| **1e17** | **1e18** |          |          |          |
+| 3,13     | 3,9,31   |          |          |          |
