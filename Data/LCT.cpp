@@ -6,15 +6,15 @@ struct node {
     node(ll val, ll weight, int id) : child {nullptr, nullptr}, parent(nullptr), max(this), sum(val), val(val), sz(weight), weight(weight), id(id), rev(false) {}
 };
 
-bool isRoot(node *p) {return p->parent == nullptr || (p->parent->child[0] != p && p->parent->child[1] != p);}
+bool isRoot(node *p) { return p->parent == nullptr || (p->parent->child[0] != p && p->parent->child[1] != p); }
 
-int side(node *p) {return p->parent->child[1] == p;}
+int side(node *p) { return p->parent->child[1] == p; }
 
-ll sum(node *p) {return p == nullptr ? 0 : p->sum;}
+ll sum(node *p) { return p == nullptr ? 0 : p->sum; }
 
-ll sz(node *p) {return p == nullptr ? 0 : p->sz;}
+ll sz(node *p) { return p == nullptr ? 0 : p->sz; }
 
-node *max(node *p) {return p == nullptr ? nullptr : p->max;}
+node *max(node *p) { return p == nullptr ? nullptr : p->max; }
 
 node *max(node *p, node *q) {
     if (p == nullptr)
