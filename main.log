@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.10.19)  30 SEP 2024 21:41
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.10.19)  2 OCT 2024 15:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -772,11 +772,11 @@ Missing character: There is no ‼ (U+203C) in font [lmmono10-italic]:!
 [28]) (./Data/笛卡尔树.cpp) (./Data/线段树合并.cpp [29])) (./DP/main.tex (./DP/Convex hull optimization.cpp) [30] (./DP/DivideAndConquerDP.cpp) (./DP/有依赖决策单调.cpp)) (./Geometry/main.tex (./Geometry/1 (1).cpp [31]
 Missing character: There is no ⚠ (U+26A0) in font [lmmono10-italic]:!
 Missing character: There is no ️ (U+FE0F) in font FangSong/OT:script=hani;language=dflt;!
-[32]) (./Geometry/1 (2).cpp [33]) (./Geometry/1 (3).cpp [34]) (./Geometry/all.cpp [35] [36] [37] [38] [39]) (./Geometry/圆面积并.cpp)) (./Graph/main.tex (./Graph/bellmanford.cpp [40]) (./Graph/BlockCutTree.cpp [41]) (./Graph/dijfast.cpp) (./Graph/dijkstra.cpp) (./Graph/dinic.cpp [42]) (./Graph/dinic_tourist.cpp [43] [44]) (./Graph/eulerian_digraph.cpp) (./Graph/eulerian_undigraph.cpp [45]) (./Graph/hungarian.cpp) (./Graph/KM.cpp [46]) (./Graph/kosaraju.cpp [47]) (./Graph/MCMF.cpp [48]) (./Graph/MCMFfast.cpp [49]) (./Graph/MCMFfull.cpp [50] [51]) (./Graph/prim.cpp) (./Graph/PushRelabel.cpp [52]) (./Graph/tarjan割点.cpp) (./Graph/tarjan割边.cpp [53]) (./Graph/tarjan强连通分量.cpp) (./Graph/tarjan点双.cpp) (./Graph/tarjan边双.cpp [54]) (./Graph/twosat.cpp) (./Graph/差分约束系统.cpp [55])) (./Math/main.tex (./Math/binom.cpp) (./Math/bsgs.cpp) (./Math/cantor.cpp [56]) (./Math/EXCRT&modequ&exgcd.cpp) (./Math/factor.cpp [57] [58]) (./Math/fft.cpp [59] [60]) (./Math/fftfast.cpp [61]) (./Math/fftnew.cpp [62] [63] [64]) (./Math/FST.cpp) (./Math/FWT.cpp [65]) (./Math/gauss(合数).cpp) (./Math/gauss.cpp) (./Math/linearbasis.cpp [66]) (./Math/lucas.cpp) (./Math/mathdiv.cpp [67]) (./Math/matrix.cpp) (./Math/matrixfast.cpp) [68] (./Math/MillerRabbin&pollard&modmul.cpp
+[32]) (./Geometry/1 (2).cpp [33]) (./Geometry/1 (3).cpp [34]) (./Geometry/all.cpp [35] [36] [37] [38] [39]) (./Geometry/圆面积并.cpp)) (./Graph/main.tex (./Graph/bellmanford.cpp [40]) (./Graph/BlockCutTree.cpp [41]) (./Graph/boruvka.cpp) (./Graph/dijfast.cpp) [42] (./Graph/dijkstra.cpp) (./Graph/dinic.cpp [43]) (./Graph/dinic_tourist.cpp [44]) (./Graph/eulerian_digraph.cpp [45]) (./Graph/eulerian_undigraph.cpp) (./Graph/hungarian.cpp [46]) (./Graph/KM.cpp [47]) (./Graph/kosaraju.cpp) (./Graph/kruskal重构树.cpp [48]) (./Graph/MCMF.cpp [49]) (./Graph/MCMFfast.cpp [50]) (./Graph/MCMFfull.cpp [51]) [52] (./Graph/prim.cpp) (./Graph/PushRelabel.cpp [53]) (./Graph/tarjan割点.cpp) (./Graph/tarjan割边.cpp) (./Graph/tarjan强连通分量.cpp [54]) (./Graph/tarjan点双.cpp) (./Graph/tarjan边双.cpp) [55] (./Graph/twosat.cpp) (./Graph/差分约束系统.cpp)) (./Math/main.tex [56] (./Math/binom.cpp) (./Math/bsgs.cpp) (./Math/cantor.cpp [57]) (./Math/EXCRT&modequ&exgcd.cpp) (./Math/factor.cpp [58] [59]) (./Math/fft.cpp [60] [61]) (./Math/fftfast.cpp [62]) (./Math/fftnew.cpp [63] [64] [65]) (./Math/FST.cpp) (./Math/FWT.cpp) (./Math/gauss(合数).cpp [66]) (./Math/gauss.cpp) (./Math/linearbasis.cpp [67]) (./Math/lucas.cpp) (./Math/mathdiv.cpp) (./Math/matrix.cpp [68]) (./Math/matrixfast.cpp) (./Math/MillerRabbin&pollard&modmul.cpp
 Missing character: There is no ≤ (U+2264) in font [lmmono10-italic]:!
 Missing character: There is no ≤ (U+2264) in font [lmmono10-italic]:!
 Missing character: There is no ≤ (U+2264) in font [lmmono10-italic]:!
-) (./Math/ntt(polynomial).cpp [69] [70] [71] [72] [73] [74]) (./Math/simplex.cpp [75]) (./Math/区间互质.cpp) (./Math/幂转下降幂(求幂和).cpp [76]) (./Math/扩展欧拉定理.cpp) (./Math/拉格朗日插值.cpp) (./Math/整除分块.cpp) [77] (./Math/枚举子集.cpp) (./Math/枚举超集.cpp) (./Math/狄利克雷卷积.cpp) (./Math/线性筛&常见积性函数.cpp [78]) (./Math/莫比乌斯反演&gcd常见结论.cpp)) (./String/main.tex (./String/ACAM.cpp [79]) [80] (./String/hash61.cpp) (./String/kmp.cpp [81]) (./String/manacherfast.cpp) (./String/MinRotation.cpp) (./String/PAM.cpp [82]) (./String/rollingHash.cpp) (./String/SA.cpp [83]) (./String/SAfast.cpp [84]) (./String/SAM.cpp [85]) (./String/SA_IS.cpp [86] [87]) (./String/Z.cpp)) (./Basic/main.tex (./Basic/AST.py [88]) (./Basic/bitset.cpp [89]) (./Basic/fastIO.cpp [90] [91]) (./Basic/FastMod.cpp) (./Basic/intervalContainer.cpp [92]) (./Basic/lineContainer.cpp) (./Basic/mint.cpp [93]) (./Basic/pbds.cpp) (./Basic/simu.cpp [94]) (./Basic/sort.cpp [95]) (./Basic/高精度.cpp [96])) [97] (./main.aux)
+[69]) (./Math/ntt(polynomial).cpp [70] [71] [72] [73] [74]) (./Math/simplex.cpp [75] [76]) (./Math/区间互质.cpp) (./Math/幂转下降幂(求幂和).cpp [77]) (./Math/扩展欧拉定理.cpp) (./Math/拉格朗日插值.cpp) (./Math/整除分块.cpp) (./Math/枚举子集.cpp) (./Math/枚举超集.cpp [78]) (./Math/狄利克雷卷积.cpp) (./Math/线性筛&常见积性函数.cpp [79]) (./Math/莫比乌斯反演&gcd常见结论.cpp)) (./String/main.tex (./String/ACAM.cpp [80]) (./String/hash61.cpp [81]) (./String/kmp.cpp [82]) (./String/manacherfast.cpp) (./String/MinRotation.cpp) (./String/PAM.cpp [83]) (./String/rollingHash.cpp) (./String/SA.cpp [84]) (./String/SAfast.cpp [85]) (./String/SAM.cpp [86]) (./String/SA_IS.cpp [87]) (./String/Z.cpp [88])) (./Basic/main.tex (./Basic/AST.py) (./Basic/bitset.cpp [89] [90]) (./Basic/fastIO.cpp [91] [92]) (./Basic/FastMod.cpp) (./Basic/intervalContainer.cpp) (./Basic/lineContainer.cpp [93]) (./Basic/mint.cpp [94]) (./Basic/pbds.cpp) (./Basic/simu.cpp [95]) (./Basic/sort.cpp [96]) (./Basic/高精度.cpp)) [97] (./main.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -784,10 +784,10 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 646F2101E815F1DE0BB91CE6014E4769;554.
  ) 
 Here is how much of TeX's memory you used:
- 23494 strings out of 476683
- 500879 string characters out of 5807574
- 2494012 words of memory out of 5000000
- 43022 multiletter control sequences out of 15000+600000
+ 23512 strings out of 476683
+ 501146 string characters out of 5807574
+ 2481012 words of memory out of 5000000
+ 43034 multiletter control sequences out of 15000+600000
  519342 words of font info for 84 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  89i,6n,97p,400b,1985s stack positions out of 10000i,1000n,20000p,200000b,200000s
