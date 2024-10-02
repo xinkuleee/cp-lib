@@ -1,18 +1,18 @@
 namespace linkCutTree {
-
 struct node {
     node *child[2], *parent, *max;
-    int sum, val, sz, weight, id, rev;
-    node(int val, int weight, int id) : child {nullptr, nullptr}, parent(nullptr), max(this), sum(val), val(val), sz(weight), weight(weight), id(id), rev(false) {}
+    int id;
+    ll sum, val, sz, weight, rev;
+    node(ll val, ll weight, int id) : child {nullptr, nullptr}, parent(nullptr), max(this), sum(val), val(val), sz(weight), weight(weight), id(id), rev(false) {}
 };
 
-bool isRoot(node *p) {return p->parent == nullptr || p->parent->child[0] != p && p->parent->child[1] != p;}
+bool isRoot(node *p) {return p->parent == nullptr || (p->parent->child[0] != p && p->parent->child[1] != p);}
 
 int side(node *p) {return p->parent->child[1] == p;}
 
-int sum(node *p) {return p == nullptr ? 0 : p->sum;}
+ll sum(node *p) {return p == nullptr ? 0 : p->sum;}
 
-int sz(node *p) {return p == nullptr ? 0 : p->sz;}
+ll sz(node *p) {return p == nullptr ? 0 : p->sz;}
 
 node *max(node *p) {return p == nullptr ? nullptr : p->max;}
 
@@ -118,13 +118,13 @@ node *pathMax(node *p, node *q) {
     return max(q);
 }
 
-int pathSum(node *p, node *q) {
+ll pathSize(node *p, node *q) {
     makeRoot(p);
     access(q);
     return sz(q);
 }
 
-int size(node *p) {
+ll rootedSum(node *p) {
     makeRoot(p);
     return sum(p);
 }
@@ -137,7 +137,9 @@ bool connected(node *p, node *q) {
 
 void fix(node *p, ll v) {
     access(p);
+    push(p);
     // modify ...
+    p->val += v;
     pull(p);
 }
 
@@ -146,7 +148,5 @@ node *lca(node *z,node *x,node *y) {
     access(x);
     return access(y);
 }
-
 }  // namespace linkCutTree
-
 using namespace linkCutTree;
