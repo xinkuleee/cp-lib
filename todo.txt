@@ -1,21 +1,16 @@
 Contest:
-    1.prime table
-    3.contest font
+    1.contest font
 String:
-    1.add duval
-    2.learn pam, sam
+    1.learn pam, sam
+    2.add duval
 DS:
-    1.fix LCT
-    2.Mo(github: NUS)
-    3.dsu_rollback
-    4.learn bitset zip trick
+    1.Mo(github: NUS)
+    2.learn bitset zip trick
 Math:
 DP:
     1.Convex Hull optmization trick
     2.monotonicity optimization
 Graph:
-    1.kruskal重构树
-    2.boruvka
     3.tarjan, blocktree
     4.flow
     5.directedMST
@@ -25,4 +20,3 @@ Geometry:
     1.format them
 Others:
     1.learn other library(kactl, the-tourist, heltion...)
-    2.add photos in trick

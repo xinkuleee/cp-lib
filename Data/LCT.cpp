@@ -129,6 +129,12 @@ ll rootedSum(node *p) {
     return sum(p);
 }
 
+ll getSubtree(node *rt, node *v) {
+    makeRoot(rt);
+    access(v);
+    return v->val;
+}
+
 bool connected(node *p, node *q) {
     access(p);
     access(q);
