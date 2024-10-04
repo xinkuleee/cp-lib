@@ -1,49 +1,36 @@
-// http://oj.daimayuan.top/course/14/problem/763 欧拉路判断
-vector<PII> g[N];
-int d[N], f[N], vis[N], edge_idx;
-vector<int> path;
+optional<vector<int>> eulerian_path(int n, const vector<PII> &E) {
+  vector<int> res;
+  if (E.empty()) return res;
+  vector<VI> adj(n + 1);
+  for (int i = 0; i < ssize(E); i++) {
+    auto [u, v] = E[i];
+    adj[u].push_back(i);
+    adj[v].push_back(i);
+  }
 
-void dfs(int x) {
-    while (f[x] < SZ(g[x])) {
-        auto [v, id] = g[x][f[x]];
-        f[x]++;
-        if (vis[id]) continue;
-        vis[id] = 1;
-        dfs(v);
-        path.pb(x);
-    }
-}
+  int s = -1, odd = 0;
+  for (int i = 1; i <= n; i++) {
+    if (ssize(adj[i]) % 2 == 0) continue;
+    if (++odd > 2) return {};
+    s = i;
+  }
+  for (int i = 1; s == -1 && i <= n; i++)
+    if (!adj[i].empty()) s = i;
 
-bool euler() {
-    int start = -1, num = 0;
-    rep(i, 1, n) {
-        if (d[i] & 1) num++, start = i;
+  vector<int> vis(ssize(E));
+  auto Dfs = [&](auto &Dfs, int u) -> void {
+    while (!adj[u].empty()) {
+      auto id = adj[u].back();
+      adj[u].pop_back();
+      if (vis[id]) continue;
+      vis[id] = 1;
+      int v = u ^ E[id].fi ^ E[id].se;
+      Dfs(Dfs, v);
+      res.push_back(v);
     }
-    if (!(num == 0 || (num == 2 && start != -1))) return false;
-    if (start == -1) {
-        rep(i, 1, n) {
-            if (d[i]) {
-                start = i;
-                break;
-            }
-        }
-    }
-    dfs(start);
-    path.pb(start);
-    reverse(all(path));
-    if (SZ(path) != m + 1) return false;
-    return true;
-}
-
-void solve() {
-    cin >> n >> m;
-    rep(i, 1, m) {
-        int u, v;
-        cin >> u >> v;
-        edge_idx++;
-        g[u].pb({v, edge_idx});
-        g[v].pb({u, edge_idx});
-        d[u]++, d[v]++;
-    }
-    cout << (euler() ? "Yes" : "No") << '\n';
+  };
+  Dfs(Dfs, s);
+  if (SZ(res) != SZ(E)) return {};
+  ranges::reverse(res);
+  return res;
 }
