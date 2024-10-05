@@ -19,7 +19,6 @@ ll powmod(ll a,ll b) {ll res=1;a%=mod; assert(b>=0); for(;b;b>>=1){if(b&1)res=re
 ll gcd(ll a,ll b) { return b?gcd(b,a%b):a;}
 // head
 
-
 const int N=1010000;
 int a[N];
 namespace Mo {

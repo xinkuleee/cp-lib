@@ -1,28 +1,24 @@
-int main() {
-    std::ios::sync_with_stdio(false);
-    cin.tie(0); cout.tie(0);
+/**
+ * #define K(x) pii(x.first/blk, x.second ^ -(x.first/blk & 1))
+ * 	iota(all(s), 0);
+ * 	sort(all(s), [&](int s, int t){ return K(Q[s]) < K(Q[t]); });
+ */
 
-    for (int i = 1; i <= m; i++) {
-        int x, y;
-        cin >> x >> y;
-        q.pb({x, y, i});
-        rej[i] = (y - x + 1LL) * (y - x) / 2LL;
-    }
-    sort(q.begin(), q.end(), [&](array<int, 3> a, array<int, 3> b)->bool{
-        if (getb(a[0]) == getb(b[0]))
-            if (getb(a[0]) & 1)
-                return a[1] < b[1];
-            else
-                return a[1] > b[1];
-        else return getb(a[0]) < getb(b[0]);
+VI Mo(const vector<array<int, 3>> &Q) {
+    const int blk = 350;
+    vector<int> s(SZ(Q)), res = s;
+    iota(all(s), 0);
+    sort(all(s), [&](int i, int j) {
+        int u = Q[i][0] / blk, v = Q[j][0] / blk;
+        return u == v ? u % 2 ? Q[i][1] > Q[j][1] : Q[i][1] < Q[j][1] : u < v;
     });
-
     int L = 1, R = 0;
-    for (int i = 0; i < m; i++) {
-        while (R < q[i][1]) R++, add(R);
-        while (L > q[i][0]) L--, add(L);
-        while (L < q[i][0]) del(L), L++;
-        while (R > q[i][1]) del(R), R--;
-        ans[q[i][2]] = tmp;
+    for (int qi : s) {
+        while (R < Q[qi][1]) R++, add(R);
+        while (L > Q[qi][0]) L--, add(L);
+        while (R > Q[qi][1]) del(R), R--;
+        while (L < Q[qi][0]) del(L), L++;
+        res[qi] = calc(Q[qi][2]);
     }
+    return res;
 }
